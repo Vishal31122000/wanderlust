@@ -2,13 +2,12 @@ version: "3.8"
 services:
   mongodb:
     container_name: mongo
-    image: "mongo"
+    image: mongo
     volumes:
-      - data:/data/db
+      - ./backend/data:/data
     ports:
       - "27017:27017"
-    command: bash -c "mongoimport --db wanderlust --collection posts --file /data/sample_posts.json --jsonArray"
-
+   
   backend:
     container_name: backend
     build: ./backend
